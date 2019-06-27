@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pwa-dev-ingress
+  namespace: namespace-dev
+  annotations:
+   kubernetes.io/ingress.global-static-ip-name: "pwa-dev"
+spec:
+  rules:
+  - host: pwa.dev.76fireworks.com
+    http:
+      paths:
+        - backend:
+           serviceName: deployment-frontend-pwa-dev
+           servicePort: 80

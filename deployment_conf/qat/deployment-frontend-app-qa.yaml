@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-frontend-app-qa
+  namespace: namespace-qa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: deployment-frontend-app-qa
+  template:
+    metadata:
+      labels:
+        run: deployment-frontend-app-qa
+    spec:
+      containers:
+      - name: fireworks-app-qa
+        image: gcr.io/wms-dev-237319/frontend-app-dev:base
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: app-http

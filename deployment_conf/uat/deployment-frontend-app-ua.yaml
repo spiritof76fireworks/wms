@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-frontend-app-ua
+  namespace: namespace-ua
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: deployment-frontend-app-ua
+  template:
+    metadata:
+      labels:
+        run: deployment-frontend-app-ua
+    spec:
+      containers:
+      - name: fireworks-app-ua
+        image: gcr.io/wms-dev-237319/frontend-app-ua:base
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: app-http

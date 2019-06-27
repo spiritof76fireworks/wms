@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-ua-ingress
+  namespace: namespace-ua
+  annotations:
+   kubernetes.io/ingress.global-static-ip-name: "api-ua"
+spec:
+  rules:
+  - host: api.ua.76fireworks.com
+    http:
+      paths:
+      - backend:
+          serviceName: deployment-backend-api-ua
+          servicePort: 80

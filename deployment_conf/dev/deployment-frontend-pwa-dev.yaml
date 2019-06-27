@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-frontend-pwa-dev
+  namespace: namespace-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: deployment-frontend-pwa-dev
+  template:
+    metadata:
+      labels:
+        run: deployment-frontend-pwa-dev
+    spec:
+      containers:
+      - name: fireworks-pwa-dev
+        image: gcr.io/wms-dev-237319/frontend-pwa-dev:base
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: pwa-http

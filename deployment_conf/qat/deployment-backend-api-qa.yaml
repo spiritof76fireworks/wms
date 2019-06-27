@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-backend-api-qa
+  namespace: namespace-qa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: deployment-backend-api-qa
+  template:
+    metadata:
+      labels:
+        run: deployment-backend-api-qa
+    spec:
+      containers:
+      - name: fireworks-api-qa
+        image: gcr.io/wms-dev-237319/backend-api-dev:base
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: api-http

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-backend-api-ua
+  namespace: namespace-ua
+  labels:
+   app: deployment-backend-api-ua
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    run: deployment-backend-api-ua
+  type: NodePort

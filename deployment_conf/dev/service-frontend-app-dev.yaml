@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-frontend-app-dev
+  namespace: namespace-dev
+  labels:
+   app: deployment-frontend-app-dev
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    run: deployment-frontend-app-dev
+  type: NodePort

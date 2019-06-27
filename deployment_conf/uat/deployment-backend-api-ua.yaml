@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-backend-api-ua
+  namespace: namespace-ua
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: deployment-backend-api-ua
+  template:
+    metadata:
+      labels:
+        run: deployment-backend-api-ua
+    spec:
+      containers:
+      - name: fireworks-api-ua
+        image: gcr.io/wms-dev-237319/backend-api-ua:base
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: api-http

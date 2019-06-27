@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-frontend-pwa-dev
+  namespace: namespace-dev
+  labels:
+   app: deployment-frontend-pwa-dev
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    run: deployment-frontend-pwa-dev
+  type: NodePort

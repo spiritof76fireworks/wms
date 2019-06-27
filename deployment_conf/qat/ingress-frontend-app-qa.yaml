@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-qa-ingress
+  namespace: namespace-qa
+  annotations:
+   kubernetes.io/ingress.global-static-ip-name: "app-qa"
+spec:
+  rules:
+  - host: app.qa.76fireworks.com
+    http:
+      paths:
+      - backend:
+          serviceName: deployment-frontend-app-qa
+          servicePort: 80

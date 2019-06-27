@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-dev-ingress
+  namespace: namespace-dev
+  annotations:
+   kubernetes.io/ingress.global-static-ip-name: "app-dev"
+spec:
+  rules:
+  - host: app.dev.76fireworks.com
+    http:
+      paths:
+        - backend:
+           serviceName: deployment-frontend-app-dev
+           servicePort: 80

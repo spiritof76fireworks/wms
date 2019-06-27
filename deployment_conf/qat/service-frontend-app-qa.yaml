@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-frontend-app-qa
+  namespace: namespace-qa
+  labels:
+   app: deployment-frontend-app-qa
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    run: deployment-frontend-app-qa
+  type: NodePort
