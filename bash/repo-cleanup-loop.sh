@@ -12,7 +12,7 @@ fi
 
 for digest in $(gcloud container images list-tags $image_path --limit=9999 --sort-by=~TIMESTAMP --filter="NOT tags = $latest" --format='get(digest)' );
 do
-    if [ $count -gt $OLD_IMAGES_TO_KEEP ]; then
+    if [ $count -gt $images_to_keep ]; then
         echo DELETE
         gcloud container images describe $image_path@$digest
         # gcloud container images delete --quiet --force-delete-tags $image_path@$digest
