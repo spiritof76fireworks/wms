@@ -7,8 +7,8 @@ for digest in $(gcloud container images list-tags $image_path --limit=9999 --sor
 do
     if [ $count -gt $images_to_keep ]; then
         echo DELETE
-        gcloud container images describe $image_path@$digest
-        # gcloud container images delete --quiet --force-delete-tags $image_path@$digest
+        # gcloud container images describe $image_path@$digest
+        gcloud container images delete --quiet --force-delete-tags $image_path@$digest
     else
         echo SKIP
         gcloud container images describe $image_path@$digest
